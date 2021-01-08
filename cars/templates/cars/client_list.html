@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Clients</h2>
+    <h3><a href="/db_viewer/client/create/">Create</a></h3>
+    <table class="table" style="margin: 10px">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">FIO</th>
+            <th scope="col">Car</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for object in object_list %}
+            <tr onclick="goToNewURL('/db_viewer/client/edit/{{ object.pk }}')">
+                <td scope="col">{{ object.id }} </td>
+                <td scope="col">{{ object.FIO }} </td>
+                <td scope="col">
+                    <ul>
+                    {% for car in object.car.all %}
+                        <li>{{ car }}</li>
+                    {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+{% endblock %}
+
+
+

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Cars</h2>
+    <h3><a href="/db_viewer/car/create/">Create</a></h3>
+    <table class="table" style="margin: 10px">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">car_model</th>
+            <th scope="col">color</th>
+            <th scope="col">production_date</th>
+            <th scope="col">is_free</th>
+            <th scope="col">price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for object in object_list %}
+            <tr onclick="goToNewURL('/db_viewer/car/edit/{{ object.id }}')">
+                <td scope="col">{{ object.id }} </td>
+                <td scope="col">{{ object.car_model }} </td>
+                <td scope="col">{{ object.color }} </td>
+                <td scope="col">{{ object.production_date }} </td>
+                <td scope="col">
+                    {% if object.is_free %}
+                            ✅
+                    {% else %}
+                            ❌
+                    {% endif %}
+                     </td>
+                <td scope="col">{{ object.price }} </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+{% endblock %}
+
+
+

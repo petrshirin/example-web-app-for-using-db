@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Clients</h2>
+    <h3><a href="/db_viewer/order/create/">Create</a></h3>
+    <table class="table" style="margin: 10px">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Manager</th>
+            <th scope="col">Client</th>
+            <th scope="col">Car</th>
+            <th scope="col">Days to use</th>
+            <th scope="col">Total price</th>
+            <th scope="col">Closed</th>
+            <th scope="col">Date created</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for object in object_list %}
+            <tr onclick="goToNewURL('/db_viewer/order/edit/{{ object.pk }}')">
+                <td scope="col">{{ object.id }}</td>
+                <td scope="col">{{ object.manager }}</td>
+                <td scope="col">{{ object.client }}</td>
+                <td scope="col">{{ object.car }}</td>
+                <td scope="col">{{ object.days_to_use }}</td>
+                <td scope="col">{{ object.total_price }}</td>
+                <td scope="col">
+                    {% if object.closed %}
+                            ✅
+                    {% else %}
+                            ❌
+                    {% endif %}
+                </td>
+                <td scope="col">{{ object.date_created }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+{% endblock %}
+
+
+

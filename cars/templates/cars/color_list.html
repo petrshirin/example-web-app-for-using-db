@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Colors</h2>
+    <h3><a href="/db_viewer/color/create/">Create❗️</a></h3>
+    <table class="table" style="margin: 10px">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for object in object_list %}
+                <tr onclick="goToNewURL('/db_viewer/color/edit/{{ object.id }}')">
+                    <td scope="col">{{ object.id }} </td>
+                    <td scope="col">{{ object.name }} </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+{% endblock %}
+
+
+

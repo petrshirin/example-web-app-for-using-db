@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Clients</h2>
+    <h3><a href="/db_viewer/client_passport_data/create/">Create</a></h3>
+    <table class="table" style="margin: 10px">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Client</th>
+            <th scope="col">Series</th>
+            <th scope="col">Number</th>
+            <th scope="col">Issued by whom</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for object in object_list %}
+            <tr onclick="goToNewURL('/db_viewer/client_passport_data/edit/{{ object.pk }}')">
+                <td scope="col">{{ object.id }}</td>
+                <td scope="col">{{ object.client }}</td>
+                <td scope="col">{{ object.series }}</td>
+                <td scope="col">{{ object.number }}</td>
+                <td scope="col">{{ object.issued_by_whom }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+{% endblock %}
+
+
+
