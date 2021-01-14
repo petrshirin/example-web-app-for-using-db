@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from .views import *
 
+
 urlpatterns = [
     path('color/', ColorList.as_view()),
     path('color/edit/<int:pk>', ColorUpdate.as_view()),
@@ -28,8 +29,8 @@ urlpatterns = [
     path('manager/create/', ManagerCreate.as_view()),
     path('manager/delete/<int:pk>', ManagerDelete.as_view()),
 
-    path('order/', OrderiList.as_view()),
-    path('order/edit/<int:pk>', OrderiUpdate.as_view()),
-    path('order/create/', OrderiCreate.as_view()),
-    path('order/delete/<int:pk>', OrderiDelete.as_view()),
+    path('order/', OrderList.as_view()),
+    path('order/edit/<int:pk>', OrderUpdate.as_view()),
+    path('order/create/', OrderCreate.as_view()),
+    path('order/delete/<int:pk>', OrderDelete.as_view()),
 ]

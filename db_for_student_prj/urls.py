@@ -18,10 +18,16 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path, include
+from django.shortcuts import redirect
+
+
+def redirect_to_color(request):
+    return redirect('db_viewer/client/')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('db_viewer/', include('cars.urls'))
+    path('db_viewer/', include('cars.urls')),
+    path('', redirect_to_color),
 ]
 
 if settings.DEBUG:
